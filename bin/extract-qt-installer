@@ -186,6 +186,18 @@ Controller.prototype.CredentialsPageCallback = function() {
     gui.clickButton(buttons.CommitButton);
 }
 
+Controller.prototype.ObligationsPageCallback = function() {
+    var page = gui.pageWidgetByObjectName("ObligationsPage");
+    page.obligationsAgreement.setChecked(true);
+    page.completeChanged();
+    gui.clickButton(buttons.NextButton);
+}
+
+Controller.prototype.DynamicTelemetryPluginFormCallback = function() {
+	gui.pageWidgetByObjectName("DynamicTelemetryPluginForm").statisticGroupBox.disableStatisticRadioButton.setChecked(true);
+	gui.clickButton(buttons.NextButton, 1000);
+}
+
 Controller.prototype.ComponentSelectionPageCallback = function() {
     log("ComponentSelectionPageCallback");
 
@@ -258,9 +270,9 @@ Controller.prototype.IntroductionPageCallback = function() {
 	   - Don't click buttons.NextButton directly. It will skip the componenet selection.
     */
     
-	if (installer.isOfflineOnly()) {
+	//if (installer.isOfflineOnly()) {
 		gui.clickButton(buttons.NextButton);
-	}  
+	//}  
 }
 
 Controller.prototype.TargetDirectoryPageCallback = function() {
